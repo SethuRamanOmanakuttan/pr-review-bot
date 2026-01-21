@@ -1,0 +1,63 @@
+# PR Review Bot Configuration
+
+mode: "beginner_friendly"
+batch_processing: true  # Enable batch processing of multiple PRs
+
+github:
+  repo: "The-Web3-Compass/30-days-of-solidity-submissions"
+  rate_limit: 20
+
+# Batch processing delays (in seconds)
+delays:
+  between_prs: 25  # Wait 25 seconds between reviewing different PRs
+  between_files: 10  # Wait 10 seconds between reviewing files within a PR
+
+agents:
+  count: 5
+  parallel_processing: true
+
+scoring:
+  thresholds:
+    approve: 4.0
+    reject: 1.0
+  weights:
+    effort: 0.50
+    relevance: 0.30
+    quality: 0.20
+
+validation:
+  concept_coverage: 0.50
+  allow_simplified: true
+  allow_learning_from_solutions: true
+  compilation_required: true
+
+token_optimization:
+  enabled: true
+  remove_comments: true
+  remove_whitespace: true
+  remove_blank_lines: true
+
+feedback:
+  tone: "encouraging"
+  always_praise_first: true
+  emoji_enabled: true
+  max_length: 3000
+
+decision:
+  default_action: "approve"
+  
+logging:
+  track_token_usage: true
+  track_approval_rate: true
+  log_level: "INFO"
+
+# Challenges configuration
+challenges:
+  path: "challenges.json"
+
+# Google Gemini Configuration
+llm:
+  provider: "google"
+  model: "gemini-2.5-flash"  # Gemini 1.5 Flash - stable v1 API model
+  temperature: 0.7
+  max_tokens: 2048
